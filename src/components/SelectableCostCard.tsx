@@ -7,7 +7,7 @@ const Card = styled.div<{ $checked: boolean }>`
 	background: rgba(255, 255, 255, 0.76);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 	display: grid;
-	gap: 12px;
+	gap: 6px;
 	transition: border-color 120ms ease, background-color 120ms ease, opacity 120ms ease;
 
 	${({ $checked }) =>

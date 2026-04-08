@@ -74,7 +74,7 @@ const Button = styled.button`
 	color: white;
 	border: none;
 	padding: 12px 18px;
-	border-radius: 12px;
+	border-radius: 8px;
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 700;
@@ -89,7 +89,7 @@ const Ghost = styled.button`
 	background: rgba(255, 255, 255, 0.7);
 	border: 1px solid var(--border-strong);
 	padding: 12px 18px;
-	border-radius: 12px;
+	border-radius: 8px;
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 700;
