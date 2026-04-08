@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import githubMark from '../assets/github-icon.svg';
 
 const AppFrame = styled.main`
 	width: 100%;
@@ -13,6 +14,33 @@ const Shell = styled.div`
 	margin: 0 auto;
 	display: grid;
 	gap: 18px;
+`;
+
+const Footer = styled.footer`
+	display: flex;
+	justify-content: center;
+	padding: 4px 0 12px;
+	color: var(--muted);
+	font-size: 13px;
+`;
+
+const FooterLink = styled.a`
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--muted);
+	font-weight: 600;
+	text-decoration: none;
+
+	&:hover {
+		color: var(--text);
+	}
+`;
+
+const GithubIcon = styled.img`
+	width: 16px;
+	height: 16px;
+	flex: 0 0 auto;
 `;
 
 const Layout = styled.section`
@@ -45,7 +73,19 @@ const SecondaryColumn = styled.aside`
 export function PageShell({ children }: { children: React.ReactNode }) {
 	return (
 		<AppFrame>
-			<Shell>{children}</Shell>
+			<Shell>
+				{children}
+				<Footer>
+					<FooterLink
+						href="https://github.com/kasp470f/pkmn-champions-vp-calculator"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<GithubIcon src={githubMark} alt="" aria-hidden="true" />
+						<span>Source code</span>
+					</FooterLink>
+				</Footer>
+			</Shell>
 		</AppFrame>
 	);
 }
