@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SetInput from './components/SetInput';
 import SetResults from './components/SetResults';
-import { PageHeader, PageShell, TwoColumnLayout } from './components/PageShell';
+import { PageShell, TwoColumnLayout } from './components/PageShell';
 import { ParsedSet } from './utils/parser';
 import { solveForVP, SolvedVP } from './utils/solver';
 
@@ -28,7 +28,6 @@ export default function App() {
 
 	return (
 		<PageShell>
-			<PageHeader title="Pokemon Champions VP Calculator" />
 			<TwoColumnLayout
 				primary={
 					<>

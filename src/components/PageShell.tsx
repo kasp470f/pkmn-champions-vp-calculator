@@ -15,39 +15,6 @@ const Shell = styled.div`
 	gap: 18px;
 `;
 
-const Masthead = styled.header`
-	padding: 6px 0 2px;
-`;
-
-const BrandRow = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 12px;
-`;
-
-const Heading = styled.div`
-	text-align: center;
-`;
-
-const Title = styled.h1`
-	margin: 0;
-	font-size: clamp(22px, 3vw, 34px);
-	line-height: 1.15;
-	letter-spacing: -0.03em;
-	color: var(--text);
-`;
-
-const Subtitle = styled.p`
-	margin: 6px 0 0;
-	max-width: 38ch;
-	font-size: 14px;
-	line-height: 1.5;
-	color: var(--muted);
-	margin-left: auto;
-	margin-right: auto;
-`;
-
 const Layout = styled.section`
 	display: grid;
 	grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
@@ -80,19 +47,6 @@ export function PageShell({ children }: { children: React.ReactNode }) {
 		<AppFrame>
 			<Shell>{children}</Shell>
 		</AppFrame>
-	);
-}
-
-export function PageHeader({ title, subtitle }: { title: string; subtitle?: string }) {
-	return (
-		<Masthead>
-			<BrandRow>
-				<Heading>
-					<Title>{title}</Title>
-					{subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-				</Heading>
-			</BrandRow>
-		</Masthead>
 	);
 }
 
