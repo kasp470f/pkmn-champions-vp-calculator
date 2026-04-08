@@ -341,6 +341,7 @@ export default function SetResults({
 										setOwnedStats((current) => ({ ...current, [k]: checked }));
 									}}
 									cost={ownedStats[k] ? 0 : solved.statCosts?.[k] ?? 0}
+									disabled={(solved.statCosts?.[k] ?? 0) === 0}
 								>
 									<StatValues>
 										<StatMetric>
