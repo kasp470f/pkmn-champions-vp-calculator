@@ -16,5 +16,3 @@ export function vpForStatSP(sp: number) {
 	const cost = (capped * VP.statMaxPerStat) / 32;
 	return Math.round(cost);
 }
-
-export default { VP, vpForStatSP };

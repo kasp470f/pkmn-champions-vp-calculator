@@ -6,7 +6,6 @@ import { Pokemon } from '@smogon/calc';
 const DEFAULT_GEN = 9;
 
 export interface ParsedSet {
-	name: string;
 	species?: string;
 	item?: string;
 	ability?: string;
@@ -37,10 +36,7 @@ export function parseShowdownSet(text: string): ParsedSet | null {
 		moves: set.moves,
 	});
 
-	console.log('Parsed set:', set, pokemon);
-
 	const parsed: ParsedSet = {
-		name: set.name || '',
 		species: set.species,
 		item: set.item,
 		ability: set.ability,

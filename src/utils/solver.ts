@@ -49,8 +49,6 @@ export function solveForVP(parsedSet: ParsedSet) {
 			);
 
 			statSpCost[statKey] = sp < 0 ? 0 : sp;
-
-			console.log(`Calculated SP for ${statKey}:`, statSpCost[statKey]);
 		}
 	}
 

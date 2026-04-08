@@ -154,29 +154,6 @@ const StatGrid = styled.div`
 	}
 `;
 
-const StatCard = styled.div`
-	padding: 14px 16px;
-	border-radius: var(--radius-md);
-	background: rgba(255, 255, 255, 0.76);
-	border: 1px solid rgba(17, 32, 51, 0.08);
-`;
-
-const StatHeader = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 12px;
-	margin-bottom: 10px;
-`;
-
-const StatName = styled.div`
-	font-size: 13px;
-	font-weight: 800;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: var(--accent-strong);
-`;
-
 const StatValues = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -203,10 +180,6 @@ const StatMetricValue = styled.div`
 	font-weight: 800;
 	color: var(--text);
 `;
-
-function sumStatCosts(statCosts: Partial<Record<StatKey, number>> | undefined) {
-	return Object.values(statCosts || {}).reduce((total, value) => total + (value || 0), 0);
-}
 
 export default function SetResults({
 	parsed,
