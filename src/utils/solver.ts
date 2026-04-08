@@ -1,12 +1,14 @@
 import { getNatureMults } from '../data/champtionsNatures';
 import { StatKey, statKeys } from '../data/statKey';
-import { VP, vpForStatSP } from '../data/vpCosts';
+import { VP, vpForStatSP } from '../data/pokemonVPCosts';
 import { ParsedSet } from './parser';
+import itemsVpCost from '../data/itemsVpCost';
 
 export interface SolvedVP {
 	moveCost: number;
 	natureCost: number;
 	abilityCost: number;
+	itemCost?: number;
 	statCosts: Partial<Record<StatKey, number>>;
 	statSpCost?: Partial<Record<StatKey, number>>;
 }
@@ -55,6 +57,7 @@ export function solveForVP(parsedSet: ParsedSet) {
 	const moveCost = VP.movePer * parsedSet.moves.length;
 	const natureCost = VP.nature;
 	const abilityCost = parsedSet.ability ? VP.ability : 0;
+	const itemCost = parsedSet.item ? itemsVpCost.find((item) => item.name.toLowerCase() === parsedSet.item!.toLowerCase())?.vpCost : 0;
 	const statCosts = Object.fromEntries(
 		Object.entries(statSpCost).map(([key, value]) => [key, value ? vpForStatSP(value) : 0])
 	) as Partial<Record<StatKey, number>>;
@@ -63,6 +66,7 @@ export function solveForVP(parsedSet: ParsedSet) {
 		moveCost,
 		natureCost,
 		abilityCost,
+		itemCost,
 		statCosts,
 		statSpCost,
 	};

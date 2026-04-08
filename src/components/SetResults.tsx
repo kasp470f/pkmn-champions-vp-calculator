@@ -192,12 +192,14 @@ export default function SetResults({
 }) {
 	const [ownedAbility, setOwnedAbility] = useState(false);
 	const [ownedNature, setOwnedNature] = useState(false);
+	const [ownedItem, setOwnedItem] = useState(false);
 	const [ownedMoves, setOwnedMoves] = useState<Record<number, boolean>>({});
 	const [ownedStats, setOwnedStats] = useState<Partial<Record<StatKey, boolean>>>({});
 
 	useEffect(() => {
 		setOwnedAbility(false);
 		setOwnedNature(false);
+		setOwnedItem(false);
 		setOwnedMoves({});
 		setOwnedStats({});
 	}, [parsed, solved]);
@@ -217,6 +219,7 @@ export default function SetResults({
 	const moveUnitCost = solved && parsed.moves.length ? solved.moveCost / parsed.moves.length : 0;
 	const adjustedAbilityCost = solved ? (ownedAbility ? 0 : solved.abilityCost) : 0;
 	const adjustedNatureCost = solved ? (ownedNature ? 0 : solved.natureCost) : 0;
+	const adjustedItemCost = solved ? (ownedItem ? 0 : solved.itemCost || 0) : 0;
 	const adjustedMoveCost = solved
 		? parsed.moves.reduce(
 				(total, _move, index) => total + (ownedMoves[index] ? 0 : moveUnitCost),
@@ -230,17 +233,32 @@ export default function SetResults({
 		  )
 		: 0;
 	const adjustedTotal =
-		adjustedMoveCost + adjustedNatureCost + adjustedAbilityCost + adjustedStatCost;
+		adjustedMoveCost + adjustedNatureCost + adjustedAbilityCost + adjustedItemCost + adjustedStatCost;
 
 	return (
 		<Panel>
 			<Block>
 				<BlockTitle>Parsed Set</BlockTitle>
 				<InfoGrid>
-					<InfoCard style={{ gridColumn: 'span 2' }}>
+					<InfoCard>
 						<Key>Species</Key>
 						<Value>{parsed.species || '-'}</Value>
 					</InfoCard>
+					{solved ? (
+						<SelectableCostCard
+							label="Item"
+							title={parsed.item || '-'}
+							checked={ownedItem}
+							onChange={setOwnedItem}
+							cost={adjustedItemCost}
+							disabled={!parsed.item || (solved.itemCost ?? 0) === 0}
+						/>
+					) : (
+						<InfoCard>
+							<Key>Item</Key>
+							<Value>{parsed.item || '-'}</Value>
+						</InfoCard>
+					)}
 					{solved ? (
 						<SelectableCostCard
 							label="Ability"
@@ -325,6 +343,10 @@ export default function SetResults({
 						<InfoCard>
 							<Key>Remaining Ability Cost</Key>
 							<Value>{adjustedAbilityCost}</Value>
+						</InfoCard>
+						<InfoCard>
+							<Key>Remaining Item Cost</Key>
+							<Value>{adjustedItemCost}</Value>
 						</InfoCard>
 						<InfoCard>
 							<Key>Remaining Stat Cost</Key>
