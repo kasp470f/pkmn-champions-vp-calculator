@@ -57,7 +57,9 @@ export function solveForVP(parsedSet: ParsedSet) {
 	const moveCost = VP.movePer * parsedSet.moves.length;
 	const natureCost = VP.nature;
 	const abilityCost = parsedSet.ability ? VP.ability : 0;
-	const itemCost = parsedSet.item ? itemsVpCost.find((item) => item.name.toLowerCase() === parsedSet.item!.toLowerCase())?.vpCost : 0;
+	const itemCost = parsedSet.item
+		? itemsVpCost.find((item) => item.name.toLowerCase() === parsedSet.item!.toLowerCase())?.vpCost
+		: 0;
 	const statCosts = Object.fromEntries(
 		Object.entries(statSpCost).map(([key, value]) => [key, value ? vpForStatSP(value) : 0])
 	) as Partial<Record<StatKey, number>>;

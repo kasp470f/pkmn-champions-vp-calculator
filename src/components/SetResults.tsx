@@ -115,9 +115,9 @@ const SummaryGrid = styled.div`
 `;
 
 const SummaryCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 	padding: 16px 18px;
 	border-radius: var(--radius-md);
 	background: rgba(255, 255, 255, 0.82);
@@ -233,7 +233,11 @@ export default function SetResults({
 		  )
 		: 0;
 	const adjustedTotal =
-		adjustedMoveCost + adjustedNatureCost + adjustedAbilityCost + adjustedItemCost + adjustedStatCost;
+		adjustedMoveCost +
+		adjustedNatureCost +
+		adjustedAbilityCost +
+		adjustedItemCost +
+		adjustedStatCost;
 
 	return (
 		<Panel>
