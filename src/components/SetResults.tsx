@@ -115,6 +115,9 @@ const SummaryGrid = styled.div`
 `;
 
 const SummaryCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 	padding: 16px 18px;
 	border-radius: var(--radius-md);
 	background: rgba(255, 255, 255, 0.82);
@@ -127,7 +130,6 @@ const SummaryLabel = styled.div`
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--muted);
-	margin-bottom: 8px;
 `;
 
 const SummaryValue = styled.div`
