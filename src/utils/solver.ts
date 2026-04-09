@@ -32,7 +32,7 @@ export function solveForVP(parsedSet: ParsedSet) {
 	const natureCost = VP.nature;
 	const abilityCost = parsedSet.ability ? VP.ability : 0;
 	const itemCost = parsedSet.item
-		? itemsVpCost.find((item) => item.name.toLowerCase() === parsedSet.item!.toLowerCase())?.vpCost
+		? (itemsVpCost.find((item) => item.name.toLowerCase() === parsedSet.item!.toLowerCase())?.vpCost ?? 0)
 		: 0;
 	const statCosts = Object.fromEntries(
 		Object.entries(statSpCost).map(([key, value]) => [key, value ? vpForStatSP(value) : 0])
