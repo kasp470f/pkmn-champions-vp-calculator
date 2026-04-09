@@ -7,21 +7,21 @@ import { solveForVP, SolvedVP } from './utils/solver';
 
 export default function App() {
 	const [setText, setSetText] = useState<string>('');
-	const [parsed, setParsed] = useState<any>(null);
-	const [solved, setSolved] = useState<SolvedVP | null>(null);
+	const [parsedTeam, setParsedTeam] = useState<ParsedSet[] | null>(null);
+	const [solvedTeam, setSolvedTeam] = useState<SolvedVP[] | null>(null);
 
-	function handleParse(nextParsed: ParsedSet | null) {
-		setParsed(nextParsed);
+	function handleParse(nextParsedTeam: ParsedSet[] | null) {
+		setParsedTeam(nextParsedTeam);
 
-		if (!nextParsed) {
-			setSolved(null);
+		if (!nextParsedTeam?.length) {
+			setSolvedTeam(null);
 			return;
 		}
 
 		try {
-			setSolved(solveForVP(nextParsed));
+			setSolvedTeam(nextParsedTeam.map((parsedSet) => solveForVP(parsedSet)));
 		} catch (err) {
-			setSolved(null);
+			setSolvedTeam(null);
 			alert((err as Error).message || 'Failed to solve');
 		}
 	}
@@ -36,7 +36,7 @@ export default function App() {
 				}
 				secondary={
 					<>
-						<SetResults parsed={parsed} solved={solved} />
+						<SetResults parsedTeam={parsedTeam} solvedTeam={solvedTeam} />
 					</>
 				}
 			/>

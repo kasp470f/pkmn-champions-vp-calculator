@@ -1,6 +1,6 @@
-import { Generations } from '@pkmn/data';
+import { Generation, Generations, PokemonSet } from '@pkmn/data';
 import { Dex } from '@pkmn/dex';
-import { Sets } from '@pkmn/sets';
+import { Sets, Team, Teams } from '@pkmn/sets';
 import { Pokemon } from '@smogon/calc';
 
 const DEFAULT_GEN = 9;
@@ -17,10 +17,24 @@ export interface ParsedSet {
 	moves: string[];
 }
 
-export function parseShowdownSet(text: string): ParsedSet | null {
+export function parseShowdownTeam(text: string): ParsedSet[] {
 	const gens = new Generations(Dex);
 	const gen = gens.get(DEFAULT_GEN);
-	const set = Sets.importSet(text, gen as any);
+	const teamImport = Team.fromString(text, gen as any);
+	if (!teamImport) throw new Error('Failed to parse team. Please check the format and try again.');
+
+	return teamImport.team.map((set) => {
+		const parsedSet = parseShowdownSet(set, gen);
+		if (!parsedSet) throw new Error('Failed to parse set. Please check the format and try again.');
+		console.log('Parsed set:', parsedSet);
+		return parsedSet;
+	});
+}
+
+export function parseShowdownSet(
+	set: Partial<PokemonSet<string>>,
+	gen: Generation
+): ParsedSet | null {
 	if (!set) throw new Error('Failed to parse set. Please check the format and try again.');
 	if (!set.species) return null;
 

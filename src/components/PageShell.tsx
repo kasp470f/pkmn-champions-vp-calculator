@@ -63,11 +63,6 @@ const SecondaryColumn = styled.aside`
 	display: grid;
 	gap: 14px;
 	align-content: start;
-
-	@media (min-width: 1101px) {
-		position: sticky;
-		top: 22px;
-	}
 `;
 
 export function PageShell({ children }: { children: React.ReactNode }) {

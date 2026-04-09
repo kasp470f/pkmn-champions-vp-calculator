@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { parseShowdownSet } from '../utils/parser';
+import { parseShowdownTeam } from '../utils/parser';
+import { ParsedSet } from '../utils/parser';
 
 const Panel = styled.section`
 	padding: clamp(18px, 3vw, 28px);
@@ -121,13 +122,13 @@ export default function SetInput({
 }: {
 	value: string;
 	onChange: (v: string) => void;
-	onParse: (p: any) => void;
+	onParse: (p: ParsedSet[] | null) => void;
 }) {
 	return (
 		<Panel>
 			<Header>
 				<Title htmlFor="set-input">Showdown export</Title>
-				<Hint>Paste the set text below.</Hint>
+				<Hint>Paste a Showdown set or full team export below.</Hint>
 			</Header>
 			<Text
 				id="set-input"
@@ -136,9 +137,11 @@ export default function SetInput({
 				placeholder={`Pikachu @ Light Ball\nAbility: Static\nTera Type: Electric\nEVs: 252 Atk / 4 SpD / 252 Spe\nJolly Nature\n- Volt Tackle\n- Fake Out\n- Knock Off\n- Protect`}
 			/>
 			<Footer>
-				<Footnote>{value.trim() ? 'Ready to parse' : 'No set pasted yet'}</Footnote>
+				<Footnote>
+					{value.trim() ? 'Ready to parse team data' : 'No Showdown export pasted yet'}
+				</Footnote>
 				<Row>
-					<Button onClick={() => onParse(parseShowdownSet(value))}>Parse Set</Button>
+					<Button onClick={() => onParse(parseShowdownTeam(value))}>Parse</Button>
 					<Ghost
 						onClick={() => {
 							onChange('');
