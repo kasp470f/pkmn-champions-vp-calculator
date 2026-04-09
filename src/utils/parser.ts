@@ -12,6 +12,7 @@ export interface ParsedSet {
 	level?: number;
 	nature?: string;
 	baseStats?: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>;
+	evs?: Partial<Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
 	calcStats?: Partial<Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>>;
 	moves: string[];
 }
@@ -44,6 +45,7 @@ export function parseShowdownSet(text: string): ParsedSet | null {
 		nature: set.nature,
 		moves: set.moves || [],
 		baseStats: pokemon.species.baseStats,
+		evs: set.evs,
 		calcStats: pokemon.rawStats,
 	};
 

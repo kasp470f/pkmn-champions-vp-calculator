@@ -335,28 +335,6 @@ export default function SetResults({
 							<SummaryValue>{adjustedTotal}</SummaryValue>
 						</SummaryCard>
 					</SummaryGrid>
-					<InfoGrid>
-						<InfoCard>
-							<Key>Remaining Move Cost</Key>
-							<Value>{adjustedMoveCost}</Value>
-						</InfoCard>
-						<InfoCard>
-							<Key>Remaining Nature Cost</Key>
-							<Value>{adjustedNatureCost}</Value>
-						</InfoCard>
-						<InfoCard>
-							<Key>Remaining Ability Cost</Key>
-							<Value>{adjustedAbilityCost}</Value>
-						</InfoCard>
-						<InfoCard>
-							<Key>Remaining Item Cost</Key>
-							<Value>{adjustedItemCost}</Value>
-						</InfoCard>
-						<InfoCard>
-							<Key>Remaining Stat Cost</Key>
-							<Value>{adjustedStatCost}</Value>
-						</InfoCard>
-					</InfoGrid>
 					<div>
 						<Key>Stat Costs</Key>
 						<StatGrid>

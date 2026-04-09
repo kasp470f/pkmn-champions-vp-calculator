@@ -1,4 +1,3 @@
-import { getNatureMults } from '../data/champtionsNatures';
 import { StatKey, statKeys } from '../data/statKey';
 import { VP, vpForStatSP } from '../data/pokemonVPCosts';
 import { ParsedSet } from './parser';
@@ -13,21 +12,8 @@ export interface SolvedVP {
 	statSpCost?: Partial<Record<StatKey, number>>;
 }
 
-function solveForBaseStat(baseStat: number, level: number): number {
-	return Math.floor(((baseStat * 2 + 31) * level) / 100);
-}
-
-function solveForSP(
-	statKey: StatKey,
-	baseStat: number,
-	calcStat: number,
-	level: number,
-	natureMult: number
-): number {
-	if (statKey === 'hp') {
-		return calcStat - solveForBaseStat(baseStat, level) - level - 10;
-	}
-	return Math.floor(calcStat / natureMult) - solveForBaseStat(baseStat, level) - 5;
+function solveForStatSP(evs: number): number {
+	return Math.floor((evs + 4) / 8);
 }
 
 export function solveForVP(parsedSet: ParsedSet) {
@@ -35,23 +21,11 @@ export function solveForVP(parsedSet: ParsedSet) {
 		throw new Error('Base stats and calculated stats are required to solve for VP.');
 	}
 
-	const natureMults = getNatureMults(parsedSet.nature);
 	const statSpCost: Partial<Record<StatKey, number>> = {};
 
 	for (const statKey of statKeys) {
-		const baseStat = parsedSet.baseStats[statKey];
-		const calcStat = parsedSet.calcStats[statKey];
-		if (baseStat !== undefined && calcStat !== undefined) {
-			const sp = solveForSP(
-				statKey,
-				baseStat,
-				calcStat,
-				parsedSet.level || 50,
-				natureMults[statKey]
-			);
-
-			statSpCost[statKey] = sp < 0 ? 0 : sp;
-		}
+		const evs = parsedSet.evs?.[statKey] || 0;
+		statSpCost[statKey] = solveForStatSP(evs);
 	}
 
 	const moveCost = VP.movePer * parsedSet.moves.length;
