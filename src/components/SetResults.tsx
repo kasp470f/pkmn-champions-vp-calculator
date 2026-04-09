@@ -139,13 +139,6 @@ const SummaryValue = styled.div`
 	color: var(--text);
 `;
 
-const SummaryText = styled.div`
-	font-size: 13px;
-	font-weight: 700;
-	line-height: 1.5;
-	color: var(--muted);
-`;
-
 const StatGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -158,7 +151,7 @@ const StatGrid = styled.div`
 
 const StatValues = styled.div`
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 10px;
 `;
 
@@ -350,6 +343,10 @@ export default function SetResults({
 									disabled={(solved.statCosts?.[k] ?? 0) === 0}
 								>
 									<StatValues>
+										<StatMetric>
+											<StatMetricLabel>Stat</StatMetricLabel>
+											<StatMetricValue>{parsed.calcStats?.[k] ?? 0}</StatMetricValue>
+										</StatMetric>
 										<StatMetric>
 											<StatMetricLabel>SP</StatMetricLabel>
 											<StatMetricValue>{solved.statSpCost?.[k] ?? 0}</StatMetricValue>
