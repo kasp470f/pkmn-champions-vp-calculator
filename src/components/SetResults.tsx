@@ -128,7 +128,6 @@ export default function SetResults({ parsedTeam, solvedTeam }: SetResultsProps) 
 		}
 
 		setOwnedTeam(parsedTeam.map(() => createOwnedState()));
-		setOpenIndexes([0]);
 	}, [parsedTeam, solvedTeam]);
 
 	if (!parsedTeam?.length || !solvedTeam?.length) {
