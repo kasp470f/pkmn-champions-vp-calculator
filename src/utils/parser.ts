@@ -22,7 +22,6 @@ export function parseShowdownSet(text: string): ParsedSet | null {
 	const gen = gens.get(DEFAULT_GEN);
 	const set = Sets.importSet(text, gen as any);
 	if (!set) throw new Error('Failed to parse set. Please check the format and try again.');
-
 	if (!set.species) return null;
 
 	const maxIVs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
