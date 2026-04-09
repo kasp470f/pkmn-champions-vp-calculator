@@ -26,7 +26,7 @@ export function parseShowdownTeam(text: string): ParsedSet[] {
 	return teamImport.team.map((set) => {
 		const parsedSet = parseShowdownSet(set, gen);
 		if (!parsedSet) throw new Error('Failed to parse set. Please check the format and try again.');
-		console.log('Parsed set:', parsedSet);
+
 		return parsedSet;
 	});
 }
