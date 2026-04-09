@@ -79,11 +79,7 @@ const Button = styled.button`
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 700;
-	box-shadow: 0 12px 24px rgba(25, 118, 210, 0.22);
 	transition: transform 120ms ease, box-shadow 120ms ease;
-	&:hover {
-		box-shadow: 0 16px 28px rgba(25, 118, 210, 0.26);
-	}
 `;
 
 const Ghost = styled.button`
