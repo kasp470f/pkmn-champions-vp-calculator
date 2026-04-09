@@ -43,7 +43,7 @@ const Text = styled.textarea`
 	font-size: 14px;
 	line-height: 1.55;
 	font-family: monospace;
-	resize: none;
+	resize: vertical;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
 	&:focus {
