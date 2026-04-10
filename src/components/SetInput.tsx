@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AppButton from './AppButton';
 import { parseShowdownTeam } from '../utils/parser';
 import { ParsedSet } from '../utils/parser';
 
@@ -70,29 +71,6 @@ const Row = styled.div`
 	flex-wrap: wrap;
 `;
 
-const Button = styled.button`
-	background: linear-gradient(180deg, var(--accent), var(--accent-strong));
-	color: white;
-	border: none;
-	padding: 12px 18px;
-	border-radius: 8px;
-	cursor: pointer;
-	font-size: 14px;
-	font-weight: 700;
-	transition: transform 120ms ease, box-shadow 120ms ease;
-`;
-
-const Ghost = styled.button`
-	background: rgba(255, 255, 255, 0.7);
-	border: 1px solid var(--border-strong);
-	padding: 12px 18px;
-	border-radius: 8px;
-	cursor: pointer;
-	font-size: 14px;
-	font-weight: 700;
-	color: var(--text);
-`;
-
 const Footer = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -137,15 +115,17 @@ export default function SetInput({
 					{value.trim() ? 'Ready to parse team data' : 'No Showdown export pasted yet'}
 				</Footnote>
 				<Row>
-					<Button onClick={() => onParse(parseShowdownTeam(value))}>Parse</Button>
-					<Ghost
+					<AppButton primary onClick={() => onParse(parseShowdownTeam(value))}>
+						Parse
+					</AppButton>
+					<AppButton
 						onClick={() => {
 							onChange('');
 							onParse(null);
 						}}
 					>
 						Clear
-					</Ghost>
+					</AppButton>
 				</Row>
 			</Footer>
 		</Panel>
