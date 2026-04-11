@@ -127,7 +127,7 @@ export default function SetResultDetails({
 						checked={owned.item}
 						onChange={onItemChange}
 						cost={adjusted.itemCost}
-						disabled={!parsed.item || (solved.itemCost ?? 0) === 0}
+						hidden={!parsed.item || (solved.itemCost ?? 0) === 0}
 					/>
 					<SelectableCostCard
 						label="Ability"
@@ -135,7 +135,7 @@ export default function SetResultDetails({
 						checked={owned.ability}
 						onChange={onAbilityChange}
 						cost={adjusted.abilityCost}
-						disabled={!parsed.ability}
+						hidden={!parsed.ability}
 					/>
 					<SelectableCostCard
 						label="Nature"
@@ -175,7 +175,7 @@ export default function SetResultDetails({
 							checked={Boolean(owned.stats[statKey])}
 							onChange={(checked) => onStatChange(statKey, checked)}
 							cost={owned.stats[statKey] ? 0 : solved.statCosts?.[statKey] ?? 0}
-							disabled={(solved.statCosts?.[statKey] ?? 0) === 0}
+							hidden={(solved.statCosts?.[statKey] ?? 0) === 0}
 						>
 							<StatValues>
 								<StatMetric>

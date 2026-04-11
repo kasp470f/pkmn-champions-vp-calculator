@@ -42,7 +42,7 @@ const Label = styled.div`
 	color: var(--muted);
 `;
 
-const CheckboxLabel = styled.label<{ $disabled: boolean }>`
+const CheckboxLabel = styled.label<{ $hidden: boolean }>`
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -50,7 +50,8 @@ const CheckboxLabel = styled.label<{ $disabled: boolean }>`
 	width: 20px;
 	height: 20px;
 	flex: 0 0 auto;
-	cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
+	cursor: pointer;
+	pointer-events: ${({ $hidden: hidden }) => (hidden ? 'none' : 'auto')};
 `;
 
 const Checkbox = styled.input`
@@ -61,7 +62,7 @@ const Checkbox = styled.input`
 	cursor: inherit;
 `;
 
-const CheckboxVisual = styled.span<{ $checked: boolean; $disabled: boolean }>`
+const CheckboxVisual = styled.span<{ $checked: boolean; $hidden: boolean }>`
 	width: 20px;
 	height: 20px;
 	border-radius: 6px;
@@ -69,8 +70,8 @@ const CheckboxVisual = styled.span<{ $checked: boolean; $disabled: boolean }>`
 	background: ${({ $checked }) =>
 		$checked ? 'rgba(25, 118, 210, 0.12)' : 'rgba(255, 255, 255, 0.96)'};
 	transition: border-color 120ms ease, background-color 120ms ease, opacity 120ms ease;
-	opacity: ${({ $disabled }) => ($disabled ? 0.55 : 1)};
 	position: relative;
+	display: ${({ $hidden }) => ($hidden ? 'none' : 'block')};
 
 	&::after {
 		content: '';
@@ -87,11 +88,6 @@ const CheckboxVisual = styled.span<{ $checked: boolean; $disabled: boolean }>`
 
 	${CheckboxLabel}:hover & {
 		border-color: rgba(25, 118, 210, 0.3);
-	}
-
-	${Checkbox}:focus-visible + & {
-		outline: 2px solid rgba(25, 118, 210, 0.22);
-		outline-offset: 2px;
 	}
 `;
 
@@ -125,6 +121,17 @@ const Body = styled.div`
 	gap: 8px;
 `;
 
+interface SelectableCostCardProps {
+	label: string;
+	title?: string;
+	checked: boolean;
+	onChange: (checked: boolean) => void;
+	cost: number;
+	children?: React.ReactNode;
+	noWrapTitle?: boolean;
+	hidden?: boolean;
+}
+
 export default function SelectableCostCard({
 	label,
 	title,
@@ -133,32 +140,23 @@ export default function SelectableCostCard({
 	cost,
 	children,
 	noWrapTitle = false,
-	disabled = false,
-}: {
-	label: string;
-	title?: string;
-	checked: boolean;
-	onChange: (checked: boolean) => void;
-	cost: number;
-	children?: React.ReactNode;
-	noWrapTitle?: boolean;
-	disabled?: boolean;
-}) {
+	hidden = false,
+}: SelectableCostCardProps) {
 	return (
 		<Card $checked={checked}>
 			<Header>
 				<Label>{label}</Label>
 				<HeaderRight>
 					<CostInline>{cost} VP</CostInline>
-					<CheckboxLabel $disabled={disabled}>
+					<CheckboxLabel $hidden={hidden}>
 						<Checkbox
 							type="checkbox"
 							checked={checked}
 							onChange={(event) => onChange(event.target.checked)}
-							disabled={disabled}
+							$hidden={hidden}
 							aria-label={`${label} already owned`}
 						/>
-						<CheckboxVisual $checked={checked} $disabled={disabled} />
+						<CheckboxVisual $checked={checked} $hidden={hidden} />
 					</CheckboxLabel>
 				</HeaderRight>
 			</Header>
