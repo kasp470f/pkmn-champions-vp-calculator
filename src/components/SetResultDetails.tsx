@@ -23,7 +23,7 @@ const InfoGrid = styled.div`
 
 const InfoCard = styled.div`
 	padding: 14px 16px;
-	border-radius: var(--radius-m);
+	border-radius: var(--border-radius-m);
 	background: rgba(255, 255, 255, 0.76);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 `;
@@ -71,7 +71,7 @@ const StatValues = styled.div`
 
 const StatMetric = styled.div`
 	padding: 4px 12px;
-	border-radius: 8px;
+	border-radius: var(--border-radius-s);
 	background: var(--surface-alt);
 `;
 

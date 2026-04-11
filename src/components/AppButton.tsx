@@ -29,7 +29,7 @@ const secondaryStyles = css`
 
 const ButtonRoot = styled.button<{ $primary: boolean }>`
 	padding: 12px 18px;
-	border-radius: 8px;
+	border-radius: var(--border-radius-s);
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 700;

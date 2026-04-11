@@ -6,7 +6,7 @@ import { ParsedSet } from '../utils/parser';
 
 const Panel = styled.section`
 	padding: clamp(18px, 3vw, 28px);
-	border-radius: var(--radius-xl);
+	border-radius: var(--border-radius-xl);
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.82));
 	border: 1px solid var(--border);
 	box-shadow: var(--shadow-md);
@@ -37,7 +37,7 @@ const Text = styled.textarea`
 	min-height: 280px;
 	margin-top: 16px;
 	padding: 16px 18px;
-	border-radius: var(--radius-l);
+	border-radius: var(--border-radius-l);
 	border: 1px solid var(--border-strong);
 	background: rgba(255, 255, 255, 0.9);
 	color: var(--text);

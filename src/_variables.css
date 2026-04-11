@@ -15,8 +15,9 @@
 	--danger: #c33b3b;
 	--shadow-lg: 0 28px 60px rgba(24, 39, 56, 0.12);
 	--shadow-md: 0 14px 36px rgba(24, 39, 56, 0.1);
-	--radius-xl: 28px;
-	--radius-l: 20px;
-	--radius-m: 12px;
-	--radius-sm: 8px;
+	--border-radius-xl: 28px;
+	--border-radius-l: 20px;
+	--border-radius-m: 12px;
+	--border-radius-s: 8px;
+	--border-radius-xs: 4px;
 }

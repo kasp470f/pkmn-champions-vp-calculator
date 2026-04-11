@@ -8,7 +8,7 @@ import TeamResultAccordionItem from './TeamResultAccordionItem';
 
 const Panel = styled.div`
 	padding: clamp(18px, 3vw, 28px);
-	border-radius: var(--radius-xl);
+	border-radius: var(--border-radius-xl);
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 249, 255, 0.84));
 	border: 1px solid var(--border);
 	box-shadow: var(--shadow-md);
@@ -57,7 +57,7 @@ const SummaryGrid = styled.div`
 
 const SummaryCard = styled.div`
 	padding: 18px 20px;
-	border-radius: var(--radius-l);
+	border-radius: var(--border-radius-l);
 	background: rgba(255, 255, 255, 0.8);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 	display: grid;
