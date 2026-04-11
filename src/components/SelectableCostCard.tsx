@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const Card = styled.div<{ $checked: boolean }>`
 	padding: 14px 16px;
-	border-radius: var(--radius-md);
+	border-radius: var(--radius-m);
 	background: rgba(255, 255, 255, 0.76);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 	display: grid;

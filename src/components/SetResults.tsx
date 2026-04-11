@@ -57,7 +57,7 @@ const SummaryGrid = styled.div`
 
 const SummaryCard = styled.div`
 	padding: 18px 20px;
-	border-radius: var(--radius-lg);
+	border-radius: var(--radius-l);
 	background: rgba(255, 255, 255, 0.8);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 	display: grid;

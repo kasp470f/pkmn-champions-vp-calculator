@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Item = styled.section`
 	border: 1px solid rgba(17, 32, 51, 0.08);
-	border-radius: var(--radius-lg);
+	border-radius: var(--radius-l);
 	background: rgba(255, 255, 255, 0.66);
 	overflow: hidden;
 `;

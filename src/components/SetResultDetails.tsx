@@ -23,7 +23,7 @@ const InfoGrid = styled.div`
 
 const InfoCard = styled.div`
 	padding: 14px 16px;
-	border-radius: var(--radius-md);
+	border-radius: var(--radius-m);
 	background: rgba(255, 255, 255, 0.76);
 	border: 1px solid rgba(17, 32, 51, 0.08);
 `;
@@ -70,8 +70,8 @@ const StatValues = styled.div`
 `;
 
 const StatMetric = styled.div`
-	padding: 6px 12px;
-	border-radius: 12px;
+	padding: 4px 12px;
+	border-radius: 8px;
 	background: var(--surface-alt);
 `;
 
@@ -81,7 +81,6 @@ const StatMetricLabel = styled.div`
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--muted);
-	margin-bottom: 4px;
 `;
 
 const StatMetricValue = styled.div`
