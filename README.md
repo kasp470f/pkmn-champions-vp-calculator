@@ -28,8 +28,9 @@ The current implementation uses these values:
 1. Copy a Pokemon Showdown export.
 2. Paste it into the textarea.
 3. Click `Parse Set`.
-4. Review the calculated VP breakdown.
-5. Tick entries you already own to see the remaining VP total.
+4. View the calculated VP breakdown in the results panel.
+5. Review the calculated VP breakdown.
+6. Tick entries you already own to see the remaining VP total.
 
 Example input:
 
