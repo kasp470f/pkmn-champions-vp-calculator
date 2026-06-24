@@ -1,6 +1,6 @@
 # Pokemon Champions VP Calculator
 
-Small React app for estimating VP cost from a Pokemon Showdown export.
+Estimating VP cost from a Pokemon Showdown export.
 
 The app parses a pasted set, derives its calculated stats, and breaks the result into move, nature, ability, and per-stat VP costs. The results panel also lets you mark pieces as already owned so you can see the remaining VP total.
 
