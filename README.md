@@ -1,7 +1,7 @@
 # Pokemon Champions VP Calculator
 
 > [!WARNING]
-> **NOT UPDATED TO THE NEWEST VERSION OF CHAMPIONS**
+> **NOT UPDATED TO THE NEWEST VERSION OF CHAMPIONS AND MIGHT NOT WANT TO DO IT**
 
 Estimating VP cost from a Pokemon Showdown export.
 
